@@ -1,0 +1,54 @@
+name=Dracula
+author=HexChat
+description=Dark theme inspired by the Dracula color palette
+version=1.0
+bg_color=#181926
+fg_color=#f8f8f2
+selected_bg=#44475a
+selected_fg=#ffffff
+input_bg=#1f1f2a
+input_fg=#f8f8f2
+nicklist_bg=#10101a
+nicklist_fg=#f8f8f2
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#f8f8f2
+text_color_1=#ff6e6e
+text_color_2=#50fa7b
+text_color_3=#bd93f9
+text_color_4=#ff79c6
+text_color_5=#8be9fd
+text_color_6=#ffb86c
+text_color_7=#ffd670
+text_color_8=#9d4edd
+text_color_9=#8338ec
+text_color_10=#7209b7
+text_color_11=#bfa5d9
+text_color_12=#ff006e
+text_color_13=#ff9f1c
+text_color_14=#fb5607
+text_color_15=#ffb703
+text_color_16=#06d6a0
+text_color_17=#118ab2
+text_color_18=#a3b5b7
+text_color_19=#ffffff
+text_color_20=#ff5f52
+text_color_21=#f9c74f
+text_color_22=#90be6d
+text_color_23=#43aa8b
+text_color_24=#4d908e
+text_color_25=#577590
+text_color_26=#277da1
+text_color_27=#9d4edd
+text_color_28=#8338ec
+text_color_29=#7209b7
+text_color_30=#bfa5d9
+text_color_31=#ff006e

@@ -1,0 +1,21 @@
+install_data(
+  'cyberpunk-neon.theme',
+  'default-dark.theme',
+  'default-light.theme',
+  'dracula.theme',
+  'forest-green.theme',
+  'github-light.theme',
+  'high-contrast.theme',
+  'midnight-purple.theme',
+  'minimal-light.theme',
+  'monokai.theme',
+  'ocean-blue.theme',
+  'pastel-dreams.theme',
+  'rainbow-pride.theme',
+  'retro-terminal.theme',
+  'solarized-dark.theme',
+  'solarized-light.theme',
+  'sunset-warm.theme',
+  'test.theme',
+  install_dir: get_option('datadir') / 'hexchat' / 'themes'
+)

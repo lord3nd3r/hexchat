@@ -1,0 +1,54 @@
+name=Cyberpunk Neon
+author=HexChat
+description=Futuristic neon cyberpunk theme
+version=1.0
+bg_color=#010005
+fg_color=#faedf5
+selected_bg=#1b0037
+selected_fg=#ff8ee5
+input_bg=#0e001c
+input_fg=#faedf5
+nicklist_bg=#040014
+nicklist_fg=#00ffff
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#0efbff
+text_color_1=#ff0180
+text_color_2=#b5179e
+text_color_3=#ffb703
+text_color_4=#2ec4b6
+text_color_5=#fdffb6
+text_color_6=#ff9f1c
+text_color_7=#8338ec
+text_color_8=#90be6d
+text_color_9=#43aa8b
+text_color_10=#4d908e
+text_color_11=#577590
+text_color_12=#277da1
+text_color_13=#9d4edd
+text_color_14=#8338ec
+text_color_15=#7209b7
+text_color_16=#c09ddb
+text_color_17=#ff006e
+text_color_18=#ff9f1c
+text_color_19=#fb5607
+text_color_20=#ffb703
+text_color_21=#06d6a0
+text_color_22=#118ab2
+text_color_23=#a4aeb9
+text_color_24=#ffffff
+text_color_25=#ff5f52
+text_color_26=#f9c74f
+text_color_27=#90be6d
+text_color_28=#43aa8b
+text_color_29=#4d908e
+text_color_30=#577590
+text_color_31=#277da1

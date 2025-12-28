@@ -1,0 +1,54 @@
+name=Forest Green
+author=HexChat
+description=Nature-inspired green theme
+version=1.0
+bg_color=#0f1f0f
+fg_color=#d4f8d4
+selected_bg=#134617
+selected_fg=#d4f8d4
+input_bg=#102513
+input_fg=#f7ffe5
+nicklist_bg=#0c120c
+nicklist_fg=#b7ffb7
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#8db68d
+text_color_1=#16a34a
+text_color_2=#4ade80
+text_color_3=#a3e635
+text_color_4=#22c55e
+text_color_5=#15803d
+text_color_6=#bbf7d0
+text_color_7=#facc15
+text_color_8=#fb5607
+text_color_9=#ffb703
+text_color_10=#06d6a0
+text_color_11=#118ab2
+text_color_12=#8cb5a4
+text_color_13=#ffffff
+text_color_14=#ff5f52
+text_color_15=#f9c74f
+text_color_16=#90be6d
+text_color_17=#43aa8b
+text_color_18=#4d908e
+text_color_19=#577590
+text_color_20=#277da1
+text_color_21=#9d4edd
+text_color_22=#8338ec
+text_color_23=#7209b7
+text_color_24=#a7a5c6
+text_color_25=#ff006e
+text_color_26=#ff9f1c
+text_color_27=#fb5607
+text_color_28=#ffb703
+text_color_29=#06d6a0
+text_color_30=#118ab2
+text_color_31=#8cb5a4

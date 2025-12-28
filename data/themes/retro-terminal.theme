@@ -1,0 +1,54 @@
+name=Retro Terminal
+author=HexChat
+description=Vintage terminal-inspired theme with classic colors
+version=1.0
+bg_color=#000c03
+fg_color=#c0f5c0
+selected_bg=#003300
+selected_fg=#f5ffef
+input_bg=#002200
+input_fg=#c5ffb5
+nicklist_bg=#010a01
+nicklist_fg=#c5ffb5
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#7ca57f
+text_color_1=#00ff23
+text_color_2=#00ffff
+text_color_3=#ffff00
+text_color_4=#ff00ff
+text_color_5=#ff6b6b
+text_color_6=#00a8ff
+text_color_7=#c084fc
+text_color_8=#ffffff
+text_color_9=#ff5f52
+text_color_10=#f9c74f
+text_color_11=#90be6d
+text_color_12=#43aa8b
+text_color_13=#4d908e
+text_color_14=#577590
+text_color_15=#277da1
+text_color_16=#9d4edd
+text_color_17=#8338ec
+text_color_18=#7209b7
+text_color_19=#9aa3b9
+text_color_20=#ff006e
+text_color_21=#ff9f1c
+text_color_22=#fb5607
+text_color_23=#ffb703
+text_color_24=#06d6a0
+text_color_25=#118ab2
+text_color_26=#7fb397
+text_color_27=#ffffff
+text_color_28=#ff5f52
+text_color_29=#f9c74f
+text_color_30=#90be6d
+text_color_31=#43aa8b

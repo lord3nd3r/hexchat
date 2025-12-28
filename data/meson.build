@@ -6,6 +6,7 @@ if get_option('gtk-frontend')
   subdir('icons')
   subdir('misc')
   subdir('man')
+  subdir('themes')
 elif get_option('theme-manager')
   subdir('misc')
 endif

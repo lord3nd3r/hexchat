@@ -1,0 +1,54 @@
+name=GitHub Light
+author=HexChat
+description=Light theme inspired by GitHub's interface
+version=1.0
+bg_color=#ffffff
+fg_color=#24292f
+selected_bg=#f6f8fa
+selected_fg=#000000
+input_bg=#f6f8fa
+input_fg=#24292f
+nicklist_bg=#f6f8fa
+nicklist_fg=#24292f
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#d0d7de
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#24292f
+text_color_1=#cf222e
+text_color_2=#116329
+text_color_3=#bf8700
+text_color_4=#0969da
+text_color_5=#8250df
+text_color_6=#1b7c83
+text_color_7=#ffffff
+text_color_8=#ff006e
+text_color_9=#ff9f1c
+text_color_10=#fb5607
+text_color_11=#ffb703
+text_color_12=#06d6a0
+text_color_13=#118ab2
+text_color_14=#073b4c
+text_color_15=#ffffff
+text_color_16=#ff5f52
+text_color_17=#f9c74f
+text_color_18=#90be6d
+text_color_19=#43aa8b
+text_color_20=#4d908e
+text_color_21=#577590
+text_color_22=#277da1
+text_color_23=#9d4edd
+text_color_24=#8338ec
+text_color_25=#7209b7
+text_color_26=#560bad
+text_color_27=#ff006e
+text_color_28=#ff9f1c
+text_color_29=#fb5607
+text_color_30=#ffb703
+text_color_31=#06d6a0

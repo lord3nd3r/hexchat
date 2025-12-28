@@ -1,0 +1,54 @@
+name=Test Light Theme
+author=Test
+description=A simple light theme for testing
+version=1.0
+bg_color=#07070f
+fg_color=#ffffff
+selected_bg=#151530
+selected_fg=#00ffff
+input_bg=#0b0b1f
+input_fg=#fefefe
+nicklist_bg=#05050c
+nicklist_fg=#ffffff
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#ffffff
+text_color_1=#f72585
+text_color_2=#7209b7
+text_color_3=#baa9de
+text_color_4=#4361ee
+text_color_5=#4cc9f0
+text_color_6=#ffb703
+text_color_7=#ff006e
+text_color_8=#4d908e
+text_color_9=#577590
+text_color_10=#277da1
+text_color_11=#9d4edd
+text_color_12=#8338ec
+text_color_13=#7209b7
+text_color_14=#c3a9e2
+text_color_15=#ff006e
+text_color_16=#ff9f1c
+text_color_17=#fb5607
+text_color_18=#ffb703
+text_color_19=#06d6a0
+text_color_20=#118ab2
+text_color_21=#a8bac0
+text_color_22=#ffffff
+text_color_23=#ff5f52
+text_color_24=#f9c74f
+text_color_25=#90be6d
+text_color_26=#43aa8b
+text_color_27=#4d908e
+text_color_28=#577590
+text_color_29=#277da1
+text_color_30=#9d4edd
+text_color_31=#8338ec

@@ -1,0 +1,54 @@
+name=Minimal Light
+author=HexChat
+description=Clean and minimal light theme
+version=1.0
+bg_color=#fdfdfd
+fg_color=#0f172a
+selected_bg=#e2e8f0
+selected_fg=#0f172a
+input_bg=#e5e7eb
+input_fg=#0f172a
+nicklist_bg=#f8fafc
+nicklist_fg=#0f172a
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#ffffff
+text_color_1=#cbd5f5
+text_color_2=#94a3b8
+text_color_3=#475569
+text_color_4=#6366f1
+text_color_5=#ec4899
+text_color_6=#22d3ee
+text_color_7=#a3e635
+text_color_8=#118ab2
+text_color_9=#073b4c
+text_color_10=#ffffff
+text_color_11=#ff5f52
+text_color_12=#f9c74f
+text_color_13=#90be6d
+text_color_14=#43aa8b
+text_color_15=#4d908e
+text_color_16=#577590
+text_color_17=#277da1
+text_color_18=#9d4edd
+text_color_19=#8338ec
+text_color_20=#7209b7
+text_color_21=#560bad
+text_color_22=#ff006e
+text_color_23=#ff9f1c
+text_color_24=#fb5607
+text_color_25=#ffb703
+text_color_26=#06d6a0
+text_color_27=#118ab2
+text_color_28=#073b4c
+text_color_29=#ffffff
+text_color_30=#ff5f52
+text_color_31=#f9c74f

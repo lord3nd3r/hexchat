@@ -1,0 +1,54 @@
+name=Rainbow Pride
+author=HexChat
+description=Bright and colorful rainbow theme celebrating diversity
+version=1.0
+bg_color=#020217
+fg_color=#ffffff
+selected_bg=#0f0f2f
+selected_fg=#00b4d8
+input_bg=#040424
+input_fg=#ffffff
+nicklist_bg=#01010f
+nicklist_fg=#ffed00
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#e40303
+text_color_1=#ff8c00
+text_color_2=#ffed00
+text_color_3=#008026
+text_color_4=#004dff
+text_color_5=#cea8d5
+text_color_6=#f72585
+text_color_7=#00b4d8
+text_color_8=#f9c74f
+text_color_9=#90be6d
+text_color_10=#43aa8b
+text_color_11=#4d908e
+text_color_12=#577590
+text_color_13=#277da1
+text_color_14=#9d4edd
+text_color_15=#8338ec
+text_color_16=#7209b7
+text_color_17=#c3a9e2
+text_color_18=#ff006e
+text_color_19=#ff9f1c
+text_color_20=#fb5607
+text_color_21=#ffb703
+text_color_22=#06d6a0
+text_color_23=#118ab2
+text_color_24=#a8bac0
+text_color_25=#ffffff
+text_color_26=#ff5f52
+text_color_27=#f9c74f
+text_color_28=#90be6d
+text_color_29=#43aa8b
+text_color_30=#4d908e
+text_color_31=#577590

@@ -1,0 +1,54 @@
+name=Pastel Dreams
+author=HexChat
+description=Soft pastel colors for a gentle theme
+version=1.0
+bg_color=#fffaf0
+fg_color=#4c1d95
+selected_bg=#dbeafe
+selected_fg=#4c1d95
+input_bg=#fef3c7
+input_fg=#4c1d95
+nicklist_bg=#fffaf0
+nicklist_fg=#4c1d95
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#fff1f3
+text_color_1=#ffb3c1
+text_color_2=#a7f3d0
+text_color_3=#bae6fd
+text_color_4=#c084fc
+text_color_5=#f472b6
+text_color_6=#fb923c
+text_color_7=#fef08a
+text_color_8=#ff5f52
+text_color_9=#f9c74f
+text_color_10=#90be6d
+text_color_11=#43aa8b
+text_color_12=#4d908e
+text_color_13=#577590
+text_color_14=#277da1
+text_color_15=#9d4edd
+text_color_16=#8338ec
+text_color_17=#7209b7
+text_color_18=#560bad
+text_color_19=#ff006e
+text_color_20=#ff9f1c
+text_color_21=#fb5607
+text_color_22=#ffb703
+text_color_23=#06d6a0
+text_color_24=#118ab2
+text_color_25=#073b4c
+text_color_26=#ffffff
+text_color_27=#ff5f52
+text_color_28=#f9c74f
+text_color_29=#90be6d
+text_color_30=#43aa8b
+text_color_31=#4d908e

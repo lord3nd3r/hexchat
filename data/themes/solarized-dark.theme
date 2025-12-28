@@ -1,0 +1,54 @@
+name=Solarized Dark
+author=HexChat
+description=Dark theme based on the Solarized color palette
+version=1.0
+bg_color=#002b36
+fg_color=#93a1a1
+selected_bg=#073642
+selected_fg=#fdf6e5
+input_bg=#073642
+input_fg=#fdf6e5
+nicklist_bg=#001f27
+nicklist_fg=#93a1a1
+chanlist_bg=#1e1e1e
+chanlist_fg=#f8f8f2
+tree_bg=#1e1e1e
+tree_fg=#f8f8f2
+away_user=#b8b8ff
+separator=#6b6bff
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+# Vibrant text palette (auto-generated)
+text_color_0=#93a1a1
+text_color_1=#dc322f
+text_color_2=#b58900
+text_color_3=#268bd2
+text_color_4=#2aa198
+text_color_5=#859900
+text_color_6=#cb4b16
+text_color_7=#eee8d5
+text_color_8=#7209b7
+text_color_9=#7d6ca5
+text_color_10=#ff006e
+text_color_11=#ff9f1c
+text_color_12=#fb5607
+text_color_13=#ffb703
+text_color_14=#06d6a0
+text_color_15=#118ab2
+text_color_16=#627d83
+text_color_17=#ffffff
+text_color_18=#ff5f52
+text_color_19=#f9c74f
+text_color_20=#90be6d
+text_color_21=#43aa8b
+text_color_22=#4d908e
+text_color_23=#577590
+text_color_24=#277da1
+text_color_25=#9d4edd
+text_color_26=#8338ec
+text_color_27=#7209b7
+text_color_28=#7d6ca5
+text_color_29=#ff006e
+text_color_30=#ff9f1c
+text_color_31=#fb5607
