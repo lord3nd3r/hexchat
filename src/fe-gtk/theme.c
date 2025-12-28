@@ -118,6 +118,77 @@ void theme_init(void) {
     g_warning("Theme: Failed to create theme directory: %s", theme_config_dir);
   }
 
+  /* If the user's theme directory has no .theme files, copy system
+     installed themes into it (one-time first-run behavior). This looks
+     through the system data dirs for "hexchat/themes" and copies any
+     .theme files we find. */
+  {
+    gboolean has_user_themes = FALSE;
+    GDir *udir = g_dir_open(theme_config_dir, 0, NULL);
+    const char *ufn;
+    if (udir) {
+      while ((ufn = g_dir_read_name(udir))) {
+        if (g_str_has_suffix(ufn, ".theme")) {
+          has_user_themes = TRUE;
+          break;
+        }
+      }
+      g_dir_close(udir);
+    }
+
+    if (!has_user_themes) {
+      gchar **sysdirs = g_get_system_data_dirs();
+      int si;
+      for (si = 0; sysdirs && sysdirs[si]; si++) {
+        gchar *cand = g_build_filename(sysdirs[si], "hexchat", "themes", NULL);
+        GDir *sdir = g_dir_open(cand, 0, NULL);
+        const char *sfn;
+        if (!sdir) {
+          g_free(cand);
+          continue;
+        }
+
+        g_message("Theme: No user themes found, copying system themes from %s", cand);
+        while ((sfn = g_dir_read_name(sdir))) {
+          if (!g_str_has_suffix(sfn, ".theme"))
+            continue;
+
+          gchar *src = g_build_filename(cand, sfn, NULL);
+          gchar *dst = g_build_filename(theme_config_dir, sfn, NULL);
+          if (g_file_test(dst, G_FILE_TEST_EXISTS)) {
+            g_free(src);
+            g_free(dst);
+            continue;
+          }
+
+          gchar *contents = NULL;
+          gsize length = 0;
+          GError *err = NULL;
+          if (g_file_get_contents(src, &contents, &length, &err)) {
+            if (!g_file_set_contents(dst, contents, length, &err)) {
+              g_warning("Theme: Failed to write theme %s: %s", dst,
+                        err ? err->message : "unknown");
+            } else {
+              g_message("Theme: Installed user theme: %s", dst);
+            }
+            g_free(contents);
+          } else if (err) {
+            g_warning("Theme: Failed to read system theme %s: %s", src, err->message);
+          }
+          if (err)
+            g_clear_error(&err);
+
+          g_free(src);
+          g_free(dst);
+        }
+
+        g_dir_close(sdir);
+        g_free(cand);
+      }
+      g_strfreev(sysdirs);
+    }
+  }
+
   /* Create default dark theme if no theme is loaded */
   g_message("Theme: Creating default dark theme");
   theme_create_default_dark();
