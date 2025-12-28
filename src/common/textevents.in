@@ -121,7 +121,7 @@ pevt_generic_none_help
 Channel Message
 XP_TE_CHANMSG
 pevt_chanmsg_help
-%C18%H<%H$4$1%C18%H>%H%O$t$2
+%C18%H<%H$3$1%C18%H>%H%O$t$2
 n4
 
 Channel Mode Generic
@@ -139,7 +139,7 @@ pevt_chanmodes_help
 Channel Msg Hilight
 XP_TE_HCHANMSG
 pevt_chanmsg_help
-%C19%H<%H$4%B$1%B%H>%H$t$2%O
+%C19%H<%H$3%B$1%B%H>%H$t$2%O
 n4
 
 Channel Notice
