@@ -133,6 +133,6 @@ See file COPYING for details.
 
 <sub>
 X-Chat ("xchat") Copyright (c) 1998-2010 By Peter Zelezny.  
-HexChat ("hexchat") Copyright (c) 2009-2025 By Berke Viktor.  
+HexChat ("hexchat") Copyright (c) 2009-2024 By Berke Viktor.  
 HexChat 2.20 Copyright (c) 2025-2026 By Kristopher Craig.
 </sub>
