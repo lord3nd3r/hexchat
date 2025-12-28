@@ -330,15 +330,55 @@ def process_theme(path, spec):
 
     lines = load_theme_lines(path)
     base_lines = []
+    existing_text_colors = {}
+    
+    # Extract existing text colors
     for line in lines:
-        if line.strip().startswith('text_color_'):
-            continue
-        base_lines.append(line)
+        stripped = line.strip()
+        if stripped.startswith('text_color_'):
+            parts = stripped.split('=', 1)
+            if len(parts) == 2:
+                key = parts[0]
+                value = parts[1]
+                existing_text_colors[key] = value
+        else:
+            base_lines.append(line)
 
-    base_lines.append('# Vibrant text palette (auto-generated)')
+    # Use standard IRC colors for text_color_0-15 to preserve user mode visibility
+    irc_mode_colors = {
+        'text_color_0': '#FFFFFF',  # White - Regular users
+        'text_color_1': '#CCCCCC',  # Light Gray - Voice users
+        'text_color_2': '#000080',  # Dark Blue - Halfop users  
+        'text_color_3': '#008000',  # Dark Green - Op users
+        'text_color_4': '#FF0000',  # Red - Admin users
+        'text_color_5': '#800000',  # Dark Red - Owner users
+        'text_color_6': '#800080',  # Purple
+        'text_color_7': '#FFA500',  # Orange
+        'text_color_8': '#FFFF00',  # Yellow
+        'text_color_9': '#00FF00',  # Green
+        'text_color_10': '#008080', # Teal
+        'text_color_11': '#00FFFF', # Cyan
+        'text_color_12': '#0000FF', # Blue
+        'text_color_13': '#FF00FF', # Magenta
+        'text_color_14': '#808080', # Gray
+        'text_color_15': '#C0C0C0', # Light Gray
+    }
+    
+    # Add IRC mode colors first (preserve user mode visibility)
+    base_lines.append('# IRC user mode colors (preserved for visibility)')
+    for i in range(16):
+        key = f'text_color_{i}'
+        # Always use standard IRC colors for mode visibility
+        color = irc_mode_colors.get(key, '#FFFFFF')
+        base_lines.append(f'{key}={color}')
+
+    # Add theme-specific colors for text_color_16+
+    base_lines.append('# Theme-specific vibrant text palette (auto-generated)')
     for idx, color in enumerate(palette):
-        base_lines.append(f'text_color_{idx}={color}')
+        text_color_key = f'text_color_{idx + 16}'
+        base_lines.append(f'{text_color_key}={color}')
 
+    # Update UI colors
     for key, value in ui_colors.items():
         prefix = f'{key}='
         replaced = False
