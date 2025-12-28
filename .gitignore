@@ -4,6 +4,7 @@ doxygen*.tmp
 html/
 *.patch
 tags
+.cache/
 # Win32 generated files
 plugins/wmpa/wmpa_h.h
 plugins/wmpa/wmpa_i.c

@@ -1,10 +1,10 @@
 project('hexchat', 'c',
-  version: '2.16.2',
-  meson_version: '>= 0.47.0',
+  version: '2.20',
+  meson_version: '>= 0.53.0',
   default_options: [
     'c_std=gnu89',
     'buildtype=debugoptimized',
-    'warning_level=1',
+    'warning_level=2',
   ]
 )
 
@@ -110,6 +110,8 @@ test_cflags = [
   ['-Werror=format-security', '-Werror=format=1'],
   '-Werror=missing-include-dirs',
   '-Werror=date-time',
+  '-Wno-deprecated-declarations',
+  '-D_FORTIFY_SOURCE=2',
 ]
 foreach cflag : test_cflags
   if cc.has_multi_arguments(cflag)

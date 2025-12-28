@@ -17,34 +17,38 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-#include <time.h>
 #include "hexchat.h"
+#include <time.h>
 
 #ifndef HEXCHAT_PROTO_H
 #define HEXCHAT_PROTO_H
 
-#define MESSAGE_TAGS_DATA_INIT			\
-	{									\
-		NULL, /* account name */		\
-		FALSE, /* identified to nick */ \
-		(time_t)0, /* timestamp */		\
-	}
+#define MESSAGE_TAGS_DATA_INIT                                                 \
+  {                                                                            \
+      NULL,      /* account name */                                            \
+      NULL,      /* msgid */                                                   \
+      NULL,      /* label */                                                   \
+      FALSE,     /* identified to nick */                                      \
+      (time_t)0, /* timestamp */                                               \
+  }
 
-#define STRIP_COLON(word, word_eol, idx) (word)[(idx)][0] == ':' ? (word_eol)[(idx)]+1 : (word)[(idx)]
+#define STRIP_COLON(word, word_eol, idx)                                       \
+  (word)[(idx)][0] == ':' ? (word_eol)[(idx)] + 1 : (word)[(idx)]
 
 /* Message tag information that might be passed along with a server message
  *
  * See http://ircv3.atheme.org/specification/capability-negotiation-3.1
  */
-typedef struct 
-{
-	char *account;
-	gboolean identified;
-	time_t timestamp;
+typedef struct {
+  char *account;
+  char *msgid;
+  char *label;
+  gboolean identified;
+  time_t timestamp;
 } message_tags_data;
 
-void message_tags_data_free (message_tags_data *tags_data);
+void message_tags_data_free(message_tags_data *tags_data);
 
-void proto_fill_her_up (server *serv);
+void proto_fill_her_up(server *serv);
 
 #endif
