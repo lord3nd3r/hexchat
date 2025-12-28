@@ -64,7 +64,7 @@ sudo apt install build-essential meson ninja-build pkg-config
 sudo apt install libgtk2.0-dev libglib2.0-dev libssl-dev liblua5.1-dev libperl-dev python3-dev
 
 # Install Python dependencies for plugins
-pip3 install cffi
+sudo apt install python3-cffi
 ```
 
 #### Other Linux Distributions
