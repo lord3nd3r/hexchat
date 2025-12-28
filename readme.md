@@ -114,6 +114,17 @@ HexChat stores configuration files in:
 - Linux/macOS: `~/.config/hexchat/`
 - Windows: `%APPDATA%\HexChat\`
 
+## Themes and Palette Maintenance
+
+The repository includes `customize_theme_colors.py`, a helper script that rewrites every theme in `~/.config/hexchat/themes/` so the palette (`text_color_*`) entries and UI colors match the advertised look (dark stays dark, light keeps a bright backdrop, and there is no pure-black text on dark canvases).
+
+Run it any time you refresh or add themes:
+```bash
+/home/ender/hexchat/.venv/bin/python customize_theme_colors.py
+```
+
+After running the script, the per-theme files will already contain the right colors, and HexChat will load them as-is from the config directory.
+
 ## Contributing
 
 Contributions are welcome! Please:

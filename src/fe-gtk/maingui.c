@@ -48,10 +48,11 @@
 #include "userlistgui.h"
 #include "chanview.h"
 #include "pixmaps.h"
+#include "theme.h"
 #include "plugin-tray.h"
 #include "xtext.h"
 #include "sexy-spell-entry.h"
-#include "gtkutil.h"
+
 
 #ifdef G_OS_WIN32
 #include <windows.h>
@@ -2304,7 +2305,11 @@ mg_update_xtext (GtkWidget *wid)
 
 	gtk_xtext_set_palette (xtext, colors);
 	gtk_xtext_set_max_lines (xtext, prefs.hex_text_max_lines);
-	gtk_xtext_set_background (xtext, channelwin_pix);
+	/* Only set background pixmap if no theme is active (theme engine owns background) */
+	if (!current_theme)
+		gtk_xtext_set_background (xtext, channelwin_pix);
+	else
+		gtk_xtext_set_background (xtext, NULL);
 	gtk_xtext_set_wordwrap (xtext, prefs.hex_text_wordwrap);
 	gtk_xtext_set_show_marker (xtext, prefs.hex_text_show_marker);
 	gtk_xtext_set_show_separator (xtext, prefs.hex_text_indent ? prefs.hex_text_show_sep : 0);
@@ -3550,6 +3555,7 @@ mg_changui_new (session *sess, restore_gui *res, int tab, int focus)
 		sess->gui = gui;
 		mg_create_topwindow (sess);
 		fe_set_title (sess);
+		theme_apply_pending();
 		return;
 	}
 
@@ -3563,6 +3569,7 @@ mg_changui_new (session *sess, restore_gui *res, int tab, int focus)
 		mg_create_tabwindow (sess);
 		mg_gui = gui;
 		parent_window = gui->window;
+		theme_apply_pending();
 	} else
 	{
 		sess->gui = gui = mg_gui;
@@ -3574,6 +3581,9 @@ mg_changui_new (session *sess, restore_gui *res, int tab, int focus)
 	if (first_run || (prefs.hex_gui_tab_newtofront == FOCUS_NEW_ONLY_ASKED && focus)
 			|| prefs.hex_gui_tab_newtofront == FOCUS_NEW_ALL )
 		chan_focus (res->tab);
+
+	/* Apply any pending themes now that the GUI is created */
+	theme_apply_pending();
 }
 
 GtkWidget *

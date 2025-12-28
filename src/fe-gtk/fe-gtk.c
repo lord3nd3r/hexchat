@@ -53,6 +53,7 @@
 #include "textgui.h"
 #include "urlgrab.h"
 #include "xtext.h"
+#include "theme.h"
 
 #ifdef USE_LIBCANBERRA
 #include <canberra.h>
@@ -315,9 +316,10 @@ GtkStyle *create_input_style(GtkStyle *style) {
 }
 
 void fe_init(void) {
-  palette_load();
+  /* Theme engine owns UI/text colors; don't load colors.conf */
   key_init();
   pixmaps_init();
+  theme_init();
 
 #ifdef HAVE_GTK_MAC
   gtkosx_application_set_dock_icon_pixbuf(osx_app, pix_hexchat);
@@ -340,6 +342,9 @@ void fe_main(void) {
                    G_CALLBACK(gtkosx_application_terminate), NULL);
 #endif
 
+  /* Apply any pending themes now that GTK is fully initialized */
+  theme_apply_pending();
+
   gtk_main();
 
   /* sleep for 2 seconds so any QUIT messages are not lost. The  */
@@ -351,6 +356,7 @@ void fe_main(void) {
 void fe_cleanup(void) {
   /* it's saved when pressing OK in setup.c */
   /*palette_save ();*/
+  theme_cleanup();
 }
 
 void fe_exit(void) { gtk_main_quit(); }

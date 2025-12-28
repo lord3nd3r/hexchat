@@ -62,6 +62,7 @@
 #include "userlistgui.h"
 #include "menu.h"
 #include "servlistgui.h"
+#include "theme.h"
 
 static GSList *submenu_list;
 
@@ -1771,6 +1772,238 @@ menu_about (GtkWidget *wid, gpointer sess)
 	gtk_widget_show_all (GTK_WIDGET(dialog));
 }
 
+static void
+menu_load_theme (GtkWidget * wid, gpointer none)
+{
+	GtkWidget *dialog;
+	char *filename;
+
+	g_message("Menu: Load theme dialog opened");
+
+	dialog = gtk_file_chooser_dialog_new (_("Load Theme"),
+										 GTK_WINDOW(parent_window),
+										 GTK_FILE_CHOOSER_ACTION_OPEN,
+										 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+										 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+										 NULL);
+
+	if (!dialog) {
+		g_warning("Menu: Failed to create file chooser dialog");
+		return;
+	}
+
+	/* Set the theme directory as default */
+	if (theme_get_config_dir())
+		gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER(dialog), theme_get_config_dir());
+
+	/* Filter for .theme files */
+	GtkFileFilter *filter = gtk_file_filter_new();
+	if (filter) {
+		gtk_file_filter_set_name(filter, _("Theme files (*.theme)"));
+		gtk_file_filter_add_pattern(filter, "*.theme");
+		gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), filter);
+	}
+
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
+	{
+		filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+		if (filename)
+		{
+			g_message("Menu: Loading theme file: %s", filename);
+			if (!theme_load_from_file(filename)) {
+				g_warning("Menu: Failed to load theme from file: %s", filename);
+			}
+			g_free(filename);
+		}
+	}
+
+	gtk_widget_destroy (dialog);
+}
+
+static void
+menu_reload_theme (GtkWidget * wid, gpointer none)
+{
+	g_message("Menu: Reloading current theme");
+	if (current_theme)
+	{
+		theme_apply();
+	}
+	else
+	{
+		g_message("Menu: No current theme, loading default dark theme");
+		theme_create_default_dark();
+	}
+}
+
+static void
+menu_theme_default_dark (GtkWidget * wid, gpointer none)
+{
+	g_message("Menu: Switching to default dark theme");
+	theme_create_default_dark();
+}
+
+static void
+menu_theme_manager (GtkWidget * wid, gpointer none)
+{
+	GtkWidget *dialog;
+	GtkWidget *vbox;
+	GtkWidget *scrolled_window;
+	GtkWidget *tree_view;
+	GtkListStore *store;
+	GtkTreeViewColumn *column;
+	GtkCellRenderer *renderer;
+	GSList *themes;
+	GSList *theme_iter;
+	GtkTreeIter iter;
+
+	g_message("Menu: Opening theme manager dialog");
+
+	/* Create dialog */
+	dialog = gtk_dialog_new_with_buttons(_("Theme Manager"),
+										GTK_WINDOW(parent_window),
+										GTK_DIALOG_MODAL,
+										GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+										GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+										NULL);
+
+	vbox = gtk_vbox_new(FALSE, 5);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), 10);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), vbox, TRUE, TRUE, 0);
+
+	/* Create scrolled window for theme list */
+	scrolled_window = gtk_scrolled_window_new(NULL, NULL);
+	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled_window),
+								   GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+	gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(scrolled_window), GTK_SHADOW_IN);
+	gtk_box_pack_start(GTK_BOX(vbox), scrolled_window, TRUE, TRUE, 0);
+
+	/* Create list store: display name, description, filename */
+	store = gtk_list_store_new(3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+
+	/* Create tree view */
+	tree_view = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
+	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(tree_view), TRUE);
+	gtk_container_add(GTK_CONTAINER(scrolled_window), tree_view);
+
+	/* Add columns */
+	renderer = gtk_cell_renderer_text_new();
+	column = gtk_tree_view_column_new_with_attributes(_("Theme"), renderer, "text", 0, NULL);
+	gtk_tree_view_append_column(GTK_TREE_VIEW(tree_view), column);
+
+	renderer = gtk_cell_renderer_text_new();
+	column = gtk_tree_view_column_new_with_attributes(_("Description"), renderer, "text", 1, NULL);
+	gtk_tree_view_append_column(GTK_TREE_VIEW(tree_view), column);
+
+	/* Populate theme list */
+	themes = theme_get_available_themes();
+	for (theme_iter = themes; theme_iter; theme_iter = theme_iter->next) {
+		char *theme_file = (char *)theme_iter->data;
+		char *theme_name = g_strdup(theme_file);
+		char *description = g_strdup(""); /* Default empty description */
+
+		/* Remove .theme extension for display */
+		if (g_str_has_suffix(theme_name, ".theme")) {
+			theme_name[strlen(theme_name) - 6] = '\0';
+		}
+
+		/* Capitalize first letter */
+		if (theme_name[0]) {
+			theme_name[0] = g_ascii_toupper(theme_name[0]);
+		}
+
+		/* Try to load description from theme file */
+		char *config_dir = theme_get_config_dir();
+		if (config_dir) {
+			char *theme_path = g_build_filename(config_dir, theme_file, NULL);
+			GIOChannel *io = g_io_channel_new_file(theme_path, "r", NULL);
+			if (io) {
+				char *line;
+				gsize len;
+				GIOStatus status;
+				while ((status = g_io_channel_read_line(io, &line, &len, NULL, NULL)) == G_IO_STATUS_NORMAL) {
+					if (g_str_has_prefix(line, "description=")) {
+						char *desc_value = strchr(line, '=') + 1;
+						if (desc_value) {
+							g_strstrip(desc_value);
+							g_free(description);
+							description = g_strdup(desc_value);
+						}
+						g_free(line);
+						break;
+					}
+					g_free(line);
+				}
+				g_io_channel_unref(io);
+			}
+			g_free(theme_path);
+		}
+
+		gtk_list_store_append(store, &iter);
+		gtk_list_store_set(store, &iter,
+					  0, theme_name,
+					  1, description,
+					  2, theme_file,
+					  -1);
+
+		g_free(theme_name);
+		g_free(description);
+		g_free(theme_file);
+	}
+	g_slist_free(themes);
+
+	/* Add default dark theme */
+	gtk_list_store_append(store, &iter);
+	gtk_list_store_set(store, &iter,
+					  0, _("Default Dark"),
+					  1, _("Modern dark theme for HexChat"),
+					  2, "",
+					  -1);
+
+	/* Select first item */
+	GtkTreeSelection *selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
+	GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
+	if (gtk_tree_model_get_iter_first(model, &iter)) {
+		gtk_tree_selection_select_iter(selection, &iter);
+	}
+
+	/* Show dialog */
+	gtk_widget_set_size_request(dialog, 400, 300);
+	gtk_widget_show_all(dialog);
+
+	gint response = gtk_dialog_run(GTK_DIALOG(dialog));
+	if (response == GTK_RESPONSE_OK) {
+		GtkTreeModel *model;
+		GtkTreeIter iter;
+		char *theme_name;
+		char *theme_file;
+
+		if (gtk_tree_selection_get_selected(selection, &model, &iter)) {
+			gtk_tree_model_get(model, &iter, 0, &theme_name, 2, &theme_file, -1);
+
+			g_message("Menu: Loading theme: %s", theme_name);
+
+			if (strcmp(theme_name, _("Default Dark")) == 0 || !theme_file || !*theme_file) {
+				theme_create_default_dark();
+			} else {
+				/* Load theme file (use stored filename; display name may be modified/capitalized) */
+				char *theme_path = g_build_filename(theme_get_config_dir(), theme_file, NULL);
+
+				if (!theme_load_from_file(theme_path)) {
+					g_warning("Menu: Failed to load theme: %s", theme_path);
+					/* Fall back to default dark */
+					theme_create_default_dark();
+				}
+				g_free(theme_path);
+			}
+
+			g_free(theme_name);
+			g_free(theme_file);
+		}
+	}
+
+	gtk_widget_destroy(dialog);
+}
+
 static struct mymenu mymenu[] = {
 	{N_("He_xChat"), 0, 0, M_NEWMENU, MENU_ID_HEXCHAT, 0, 1, 0},
 	{N_("Network Li_st"), menu_open_server_list, (char *)&pix_book, M_MENUPIX, 0, 0, 1, GDK_KEY_s},
@@ -1862,6 +2095,14 @@ static struct mymenu mymenu[] = {
 		{N_("Search Next"   ), menu_search_next, GTK_STOCK_FIND, M_MENUSTOCK, 0, 0, 1, GDK_KEY_g},
 		{N_("Search Previous"   ), menu_search_prev, GTK_STOCK_FIND, M_MENUSTOCK, 0, 0, 1, GDK_KEY_G},
 		{0, 0, 0, M_END, 0, 0, 0, 0},
+
+	{N_("_Theme"), 0, 0, M_NEWMENU, 0, 0, 1, 0},
+	{N_("Load Theme" ELLIPSIS), menu_load_theme, 0, M_MENUITEM, 0, 0, 1, 0},
+	{N_("Reload Theme"), menu_reload_theme, 0, M_MENUITEM, 0, 0, 1, 0},
+	{0, 0, 0, M_SEP, 0, 0, 0, 0},
+	{N_("Default Dark"), menu_theme_default_dark, 0, M_MENURADIO, 0, 0, 1, 0},
+	{0, 0, 0, M_SEP, 0, 0, 0, 0},
+	{N_("Theme Manager" ELLIPSIS), menu_theme_manager, 0, M_MENUITEM, 0, 0, 1, 0},
 
 	{N_("_Help"), 0, 0, M_NEWMENU, 0, 0, 1, 0},	/* 74 */
 	{N_("_Contents"), menu_docs, GTK_STOCK_HELP, M_MENUSTOCK, 0, 0, 1, GDK_KEY_F1},
