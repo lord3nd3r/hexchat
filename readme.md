@@ -45,6 +45,41 @@ For more information on HexChat please read our [documentation](https://hexchat.
 ## Building from Source
 
 ### Prerequisites
+
+#### Ubuntu/Debian
+```bash
+# Install build tools and dependencies
+sudo apt update
+sudo apt install build-essential meson ninja-build pkg-config
+
+# Install required libraries
+sudo apt install libgtk2.0-dev libglib2.0-dev libssl-dev liblua5.1-dev libperl-dev python3-dev
+
+# Install Python dependencies for plugins
+pip3 install cffi
+```
+
+#### Other Linux Distributions
+- **Fedora/RHEL/CentOS**: `sudo dnf install gtk2-devel glib2-devel openssl-devel lua-devel perl-devel python3-devel meson ninja-build`
+- **Arch Linux**: `sudo pacman -S gtk2 glib2 openssl lua perl python meson ninja`
+- **openSUSE**: `sudo zypper install gtk2-devel glib2-devel libopenssl-devel lua-devel perl-devel python3-devel meson ninja`
+
+#### macOS
+```bash
+# Install Homebrew if not already installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install dependencies
+brew install gtk+ glib openssl lua perl python meson ninja pkg-config
+pip3 install cffi
+```
+
+#### Windows
+- Use MSYS2 or similar environment
+- Install GTK2, GLib, OpenSSL, and other dependencies via pacman
+- Follow the [Windows build guide](https://hexchat.readthedocs.org/en/latest/building.html#windows)
+
+### System Requirements
 - GTK+ 2.24 or later
 - GLib 2.36 or later
 - OpenSSL 1.0.1 or later
@@ -57,11 +92,11 @@ For more information on HexChat please read our [documentation](https://hexchat.
 # Configure the build
 meson setup build
 
-# Build the project
+# Build the project (use -j$(nproc) for parallel compilation)
 ninja -C build
 
-# Install (optional)
-ninja -C build install
+# Install system-wide (optional, requires root)
+sudo ninja -C build install
 ```
 
 ### Running
