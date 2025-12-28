@@ -19,8 +19,16 @@ For more information on HexChat please read our [documentation](https://hexchat.
 - **DCC Support**: Direct file transfers and chat
 - **Multiple Networks**: Connect to multiple IRC networks simultaneously
 - **Themes and Customization**: 18+ built-in themes with automatic installation
+- **IRC User Mode Display**: Proper display of user roles (@op, %halfop, +voice, ~owner) in chat
 
 ### New in Version 2.20
+
+#### 🎨 Comprehensive Theme System (MAJOR)
+- **18+ Built-in Themes**: Professional themes including Dracula, Monokai, Solarized, Cyberpunk, and more
+- **Automatic Installation**: Themes are automatically copied to user directories on first run
+- **Cross-platform Support**: Works seamlessly on Linux, Windows, and macOS
+- **Theme Manager**: Easy theme switching via View → Theme menu
+- **Color Palette Fixes**: IRC user mode colors preserved for proper visibility
 
 #### 🖼️ Image URL Context Menu (NEW!)
 - **Smart Detection**: Automatically detects image URLs (.jpg, .png, .gif, .bmp, .webp)
@@ -28,10 +36,10 @@ For more information on HexChat please read our [documentation](https://hexchat.
 - **External Viewer**: Opens images in your system's default image viewer
 - **Seamless Integration**: Works with existing URL handling system
 
-#### Enhanced Build System
-- **Meson Build System**: Modern, fast build configuration
-- **Parallel Compilation**: Optimized for multi-core systems
-- **Comprehensive Dependencies**: Full GTK2, OpenSSL, and plugin support
+#### 🔧 IRC Functionality Improvements
+- **User Mode Prefixes**: IRC user roles (@op, %halfop, +voice, ~owner) now display correctly in chat messages
+- **Theme Compatibility**: Fixed theme colors that were breaking IRC user mode visibility
+- **Enhanced Build System**: Meson/Ninja build system with improved cross-platform support
 
 #### Plugin Ecosystem
 - **Lua Support**: LuaJIT integration for high-performance scripting
