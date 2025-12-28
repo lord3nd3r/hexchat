@@ -18,7 +18,7 @@ For more information on HexChat please read our [documentation](https://hexchat.
 - **SSL/TLS Support**: Secure connections with OpenSSL
 - **DCC Support**: Direct file transfers and chat
 - **Multiple Networks**: Connect to multiple IRC networks simultaneously
-- **Themes and Customization**: Extensive theming and configuration options
+- **Themes and Customization**: 18+ built-in themes with automatic installation
 
 ### New in Version 2.20
 
@@ -114,16 +114,35 @@ HexChat stores configuration files in:
 - Linux/macOS: `~/.config/hexchat/`
 - Windows: `%APPDATA%\HexChat\`
 
-## Themes and Palette Maintenance
+## Themes and Customization
 
-The repository includes `customize_theme_colors.py`, a helper script that rewrites every theme in `~/.config/hexchat/themes/` so the palette (`text_color_*`) entries and UI colors match the advertised look (dark stays dark, light keeps a bright backdrop, and there is no pure-black text on dark canvases).
+HexChat includes a comprehensive theme system with automatic theme installation for all users.
 
-Run it any time you refresh or add themes:
+### Automatic Theme Installation
+- **System-wide Themes**: 18+ professionally designed themes are included in the build
+- **First-run Setup**: Themes are automatically copied to each user's config directory on first launch
+- **No Manual Setup**: Users get immediate access to a full theme collection without downloading or configuring
+
+### Available Themes
+The build includes these themes:
+- **Dark Themes**: Dracula, Monokai, Solarized Dark, Cyberpunk Neon, Midnight Purple, Ocean Blue, Retro Terminal, Forest Green, High Contrast
+- **Light Themes**: Solarized Light, GitHub Light, Minimal Light, Sunset Warm, Pastel Dreams, Rainbow Pride
+- **Default Themes**: Default Dark and Default Light for basic usage
+
+### Theme Management
+- **Theme Menu**: Access themes via View → "_Theme" menu
+- **Theme Manager**: Browse and switch themes easily
+- **Custom Themes**: Users can add their own `.theme` files to `~/.config/hexchat/themes/`
+
+### Palette Maintenance Script
+The repository includes `customize_theme_colors.py`, a helper script that ensures theme palettes and UI colors are properly configured for optimal readability.
+
+Run it to refresh existing themes:
 ```bash
-/home/ender/hexchat/.venv/bin/python customize_theme_colors.py
+python3 customize_theme_colors.py
 ```
 
-After running the script, the per-theme files will already contain the right colors, and HexChat will load them as-is from the config directory.
+This script updates palette colors to prevent issues like black text on dark backgrounds.
 
 ## Contributing
 
